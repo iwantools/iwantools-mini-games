@@ -526,7 +526,7 @@ const styles = `
     box-shadow: 0 0 42px rgba(70,231,169,.2), inset 0 0 36px rgba(101,245,193,.08);
     animation: win-arrive .65s cubic-bezier(.2,.9,.2,1) both, win-glow 1.8s .5s ease-in-out infinite alternate;
   }
-  .win-rays { position: absolute; width: 260px; height: 260px; border-radius: 50%; background: repeating-conic-gradient(from 0deg, rgba(110,255,208,.13) 0 8deg, transparent 8deg 20deg); animation: win-rays 8s linear infinite; }
+  .win-rays { position: absolute; inset: -260%; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(110,255,208,.13) 0 8deg, transparent 8deg 20deg); transform-origin: center; animation: win-rays 8s linear infinite; }
   .win-confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
   .win-confetti b { position: absolute; top: -14px; left: var(--x); width: 7px; height: 12px; border-radius: 2px; background: ${'hsl(var(--hue) 92% 66%)'}; box-shadow: 0 0 7px ${'hsl(var(--hue) 92% 66% / .45)'}; opacity: 0; animation: confetti-fall 1.8s calc(var(--confetti) * 31ms) cubic-bezier(.18,.72,.32,1) both; }
   .win-confetti b:nth-child(3n) { width: 9px; height: 9px; border-radius: 50%; }
