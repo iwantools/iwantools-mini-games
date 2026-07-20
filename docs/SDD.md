@@ -3,14 +3,32 @@
 ## 文档状态
 
 - 项目: iwantools-mini-games
-- 适用里程碑: v0.1.0 扫雷 MVP
+- 适用里程碑: 持续迭代；当前为 2048
 - 文档状态: 已确认
 - 负责人: Caoshenyang
 - 关联工作项: `iwantools/iwantools#21`
 
 ## 背景
 
-首版需要交付一款能被 iwantools 官网同源按需加载的经典扫雷，同时保持游戏规则、浏览器呈现、官网页面和本地存储的职责清晰。设计必须支持桌面和移动交互，但不为未来账号、挑战或排行榜提前搭建平台。
+项目已经完成扫雷首个里程碑，当前新增第二款正式游戏 2048。两款游戏分别维护规则、Web adapter 和本地存储，不提前抽象通用游戏平台；构建层只增加多入口输出。
+
+## 2048 模块
+
+```text
+src/games/game2048/core/
+  Interface: createGame / move / continueGame / restartGame
+  责任: 4×4 棋盘、移动、单次合并、计分、新方块、2048 与终局
+
+src/games/game2048/storage/
+  Interface: loadBestScore / saveBestScore
+  责任: 版本化本机最高分与存储不可用降级
+
+src/games/game2048/web/
+  Adapter: <iw-2048>
+  责任: 键盘、WASD、触屏滑动、方向按钮、规则和结算反馈
+```
+
+2048 核心保持纯 TypeScript，随机源可注入。`won` 只暂停一次并允许 `continueGame`；继续后达到更高方块不重复阻塞。`lost` 在棋盘填满且相邻无相同数字时产生。
 
 ## 架构概览
 

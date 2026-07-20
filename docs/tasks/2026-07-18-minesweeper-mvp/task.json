@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "2026-07-18-minesweeper-mvp",
+  "title": "扫雷 MVP 构建",
+  "project": "iwantools-mini-games",
+  "status": "completed",
+  "created_at": "2026-07-18T22:48:23+08:00",
+  "updated_at": "2026-07-18T23:06:32+08:00",
+  "completed_at": "2026-07-18T23:06:32+08:00",
+  "scope": [
+    "实现三档难度、首击安全、展开、插旗与胜负规则",
+    "实现原生 Custom Element 的桌面、触屏和键盘交互",
+    "实现本机难度偏好与最佳时间存储",
+    "产出版本化独立 ESM 并记录体积和校验和"
+  ],
+  "out_of_scope": [
+    "登录、同步、排行榜和后端",
+    "第二款游戏与通用游戏平台",
+    "发布、部署、Git 提交和推送"
+  ],
+  "acceptance": [
+    {
+      "id": "AC-01",
+      "text": "核心规则单元测试覆盖三档难度、首击安全、展开、插旗与胜负。",
+      "status": "passed",
+      "evidence": ["EV-20260718-001"]
+    },
+    {
+      "id": "AC-02",
+      "text": "iw-minesweeper 可幂等注册并在真实浏览器独立运行。",
+      "status": "passed",
+      "evidence": ["EV-20260718-001", "EV-20260718-003"]
+    },
+    {
+      "id": "AC-03",
+      "text": "构建输出 dist/minesweeper/iw-minesweeper.js。",
+      "status": "passed",
+      "evidence": ["EV-20260718-002"]
+    },
+    {
+      "id": "AC-04",
+      "text": "构建产物 gzip 不超过 50 KB。",
+      "status": "passed",
+      "evidence": ["EV-20260718-002"]
+    }
+  ],
+  "context": [
+    { "path": "docs/PRD.md", "purpose": "扫雷 MVP 产品定义与验收" },
+    { "path": "docs/SDD.md", "purpose": "核心、adapter、存储与构建边界" },
+    { "glob": "src/games/minesweeper/**/*.ts", "purpose": "扫雷实现" },
+    { "glob": "tests/**/*.test.ts", "purpose": "核心与存储单元测试" }
+  ],
+  "issue": "iwantools/iwantools#21",
+  "external_references": [
+    { "id": "mini-games-issue", "kind": "github-issue", "locator": "iwantools/iwantools#21", "purpose": "摸鱼小游戏规格工作项" }
+  ],
+  "skills": ["implement", "iwantools-frontend-development", "manage-task-packages"],
+  "current_phase": "completed",
+  "checkpoint": "扫雷核心、Custom Element、偏好存储、12 项单元测试和独立 ESM 已完成。真实浏览器验证首击安全展开、计时、右键插旗、三档切换和移动端高级棋盘受控横向滚动，无控制台错误。未执行发布、部署、commit 或 push。",
+  "next_action": null
+}
