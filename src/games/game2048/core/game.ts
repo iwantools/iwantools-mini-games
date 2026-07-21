@@ -1,7 +1,16 @@
 import type { Direction, Game2048State, RandomSource } from './types'
 
 export const BOARD_SIZE = 4
+export const CELEBRATION_MILESTONES = [2048, 4096, 8192, 16384] as const
 const CELL_COUNT = BOARD_SIZE * BOARD_SIZE
+
+export type CelebrationMilestone = typeof CELEBRATION_MILESTONES[number]
+
+export function reachedCelebrationMilestone(previousCells: number[], nextCells: number[]): CelebrationMilestone | undefined {
+  const previousHighest = Math.max(...previousCells)
+  const nextHighest = Math.max(...nextCells)
+  return CELEBRATION_MILESTONES.find(milestone => previousHighest < milestone && nextHighest >= milestone)
+}
 
 function clampRandom(random: RandomSource): number {
   return Math.max(0, Math.min(0.999999999, random()))

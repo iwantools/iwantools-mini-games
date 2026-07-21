@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { canMove, continueGame, createGame, mergeLine, move } from '../src/games/game2048/core/game'
+import { canMove, continueGame, createGame, mergeLine, move, reachedCelebrationMilestone } from '../src/games/game2048/core/game'
 import type { Game2048State } from '../src/games/game2048/core/types'
 
 const lowRandom = () => 0
@@ -37,6 +37,14 @@ describe('2048 core', () => {
     expect(won.status).toBe('won')
     expect(won.achieved2048).toBe(true)
     expect(continueGame(won).status).toBe('playing')
+  })
+
+  it('recognizes distinct celebration milestones without repeating an achieved one', () => {
+    expect(reachedCelebrationMilestone([1024], [2048])).toBe(2048)
+    expect(reachedCelebrationMilestone([2048], [4096])).toBe(4096)
+    expect(reachedCelebrationMilestone([4096], [8192])).toBe(8192)
+    expect(reachedCelebrationMilestone([8192], [16384])).toBe(16384)
+    expect(reachedCelebrationMilestone([4096], [4096, 2])).toBeUndefined()
   })
 
   it('detects a board with no legal moves', () => {

@@ -390,11 +390,11 @@ export class MinesweeperElement extends HTMLElement {
         </div>
 
         ${this.#state.status === 'won' ? `
+          <div class="win-confetti" aria-hidden="true">
+            ${Array.from({ length: 72 }, (_, index) => `<b style="--confetti:${index};--x:${(index * 47) % 101}vw;--drift:${((index * 43) % 180) - 90}px;--hue:${(index * 47) % 360};--duration:${2.4 + ((index * 17) % 18) / 10}s"></b>`).join('')}
+          </div>
           <div class="win-banner" aria-hidden="true">
             <span class="win-rays"></span>
-            <span class="win-confetti">
-              ${Array.from({ length: 30 }, (_, index) => `<b style="--confetti:${index};--x:${(index * 37) % 101}%;--drift:${((index * 29) % 61) - 30}px;--hue:${(index * 47) % 360}"></b>`).join('')}
-            </span>
             <span class="win-mark">✓</span>
             <span class="win-copy"><em>MISSION CLEARED</em><strong>完美排雷！</strong><small>${formatTime(this.#elapsedMs)} 秒完成 · 再破一次纪录</small></span>
             ${Array.from({ length: 18 }, (_, index) => `<i style="--spark:${index}"></i>`).join('')}
@@ -527,10 +527,10 @@ const styles = `
     animation: win-arrive .65s cubic-bezier(.2,.9,.2,1) both, win-glow 1.8s .5s ease-in-out infinite alternate;
   }
   .win-rays { position: absolute; inset: -260%; background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(110,255,208,.13) 0 8deg, transparent 8deg 20deg); transform-origin: center; animation: win-rays 8s linear infinite; }
-  .win-confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-  .win-confetti b { position: absolute; top: -14px; left: var(--x); width: 7px; height: 12px; border-radius: 2px; background: ${'hsl(var(--hue) 92% 66%)'}; box-shadow: 0 0 7px ${'hsl(var(--hue) 92% 66% / .45)'}; opacity: 0; animation: confetti-fall 1.8s calc(var(--confetti) * 31ms) cubic-bezier(.18,.72,.32,1) both; }
+  .win-confetti { position: fixed; z-index: 9999; inset: 0; overflow: hidden; pointer-events: none; contain: strict; }
+  .win-confetti b { position: absolute; top: -10vh; left: var(--x); width: clamp(7px,1vw,12px); height: clamp(14px,2vw,24px); border-radius: 2px; background: ${'hsl(var(--hue) 92% 66%)'}; box-shadow: 0 0 10px ${'hsl(var(--hue) 92% 66% / .5)'}; opacity: 0; animation: confetti-fall var(--duration) calc(var(--confetti) * -47ms) linear infinite; will-change: transform; }
   .win-confetti b:nth-child(3n) { width: 9px; height: 9px; border-radius: 50%; }
-  .win-confetti b:nth-child(4n) { width: 5px; height: 15px; }
+  .win-confetti b:nth-child(4n) { width: 5px; height: 18px; }
   .win-mark { z-index: 1; display: grid; width: 58px; height: 58px; place-items: center; border-radius: 50%; color: #031b17; background: #77ffd0; font-size: 34px; font-weight: 900; box-shadow: 0 0 34px rgba(101,245,193,.85); animation: win-mark .8s .12s cubic-bezier(.2,1.6,.4,1) both; }
   .win-copy { z-index: 1; display: grid; gap: 4px; }
   .win-copy em { color: #53e8ba; font: 800 9px/1 ui-monospace, monospace; letter-spacing: .2em; }
@@ -546,7 +546,7 @@ const styles = `
   @keyframes win-arrive { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: none; } }
   @keyframes win-mark { from { opacity: 0; transform: scale(.45) rotate(-20deg); } to { opacity: 1; transform: none; } }
   @keyframes win-spark { 0% { opacity: 0; transform: rotate(var(--angle)) translateX(18px) scale(.4); } 20% { opacity: 1; } 100% { opacity: 0; transform: rotate(var(--angle)) translateX(110px) rotate(160deg) scale(1); } }
-  @keyframes confetti-fall { 0% { opacity: 0; transform: translate3d(0,-12px,0) rotate(0deg) scale(.7); } 12% { opacity: 1; } 78% { opacity: 1; } 100% { opacity: 0; transform: translate3d(var(--drift),145px,0) rotate(620deg) scale(1); } }
+  @keyframes confetti-fall { 0% { opacity: 0; transform: translate3d(0,-12vh,0) rotate(0deg) scale(.7); } 8% { opacity: 1; } 88% { opacity: 1; } 100% { opacity: 0; transform: translate3d(var(--drift),112vh,0) rotate(720deg) scale(1); } }
   @keyframes win-rays { to { transform: rotate(360deg); } }
   @keyframes win-glow { to { box-shadow: 0 0 60px rgba(70,231,169,.34), inset 0 0 44px rgba(101,245,193,.12); } }
   @keyframes victory-cell { 0% { transform: scale(.78); filter: brightness(2.3); } 65% { transform: scale(1.09); } 100% { transform: none; filter: none; } }

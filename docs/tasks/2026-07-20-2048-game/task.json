@@ -5,13 +5,14 @@
   "project": "iwantools-mini-games",
   "status": "completed",
   "created_at": "2026-07-20T21:34:11+08:00",
-  "updated_at": "2026-07-20T21:41:38+08:00",
-  "completed_at": "2026-07-20T21:41:38+08:00",
+  "updated_at": "2026-07-20T22:39:04+08:00",
+  "completed_at": "2026-07-20T22:39:04+08:00",
   "scope": [
     "修订项目规格，明确项目已进入正式多游戏迭代",
     "实现经典 4×4 2048 核心规则、最高分存储和 Custom Element",
     "支持键盘、WASD、手机滑动与可见方向按钮",
-    "构建独立版本 adapter 并接入官网游戏列表与 /games/2048/"
+    "构建独立版本 adapter 并接入官网游戏列表与 /games/2048/",
+    "为 2048、4096、8192 与 16384 提供分层里程碑庆祝，2048 后允许继续挑战"
   ],
   "out_of_scope": [
     "撤销、排行榜、账号同步、自定义棋盘、自动求解、音效和震动",
@@ -23,7 +24,10 @@
     { "id": "AC-02", "text": "桌面键盘和 WASD、手机滑动与方向按钮均可操作。", "status": "passed", "evidence": ["EV-20260720-203"] },
     { "id": "AC-03", "text": "显示分数、本机最高分、规则、重新开始和胜负反馈。", "status": "passed", "evidence": ["EV-20260720-201", "EV-20260720-203"] },
     { "id": "AC-04", "text": "2048 独立 adapter 构建通过并满足体积预算。", "status": "passed", "evidence": ["EV-20260720-201"] },
-    { "id": "AC-05", "text": "官网列表和 /games/2048/ 使用固定同源版本且完整验证通过。", "status": "passed", "evidence": ["EV-20260720-202", "EV-20260720-203"] }
+    { "id": "AC-05", "text": "官网列表和 /games/2048/ 使用固定同源版本且完整验证通过。", "status": "passed", "evidence": ["EV-20260720-202", "EV-20260720-203"] },
+    { "id": "AC-06", "text": "2048 使用可继续挑战的完整庆祝，后续关键数字使用不打断操作的差异化庆祝。", "status": "passed", "evidence": ["EV-20260720-204"] },
+    { "id": "AC-07", "text": "localhost 提供成功与后续节点预览按钮，线上环境不显示调试控件。", "status": "passed", "evidence": ["EV-20260720-205"] },
+    { "id": "AC-08", "text": "达成庆祝时撒花覆盖完整浏览器视口，且不阻挡继续操作。", "status": "passed", "evidence": ["EV-20260720-206"] }
   ],
   "context": [
     { "path": "docs/PRD.md", "purpose": "持续迭代产品范围" },
@@ -36,7 +40,7 @@
     { "id": "site-integration", "kind": "workspace-project", "locator": "projects/iwantools-site", "purpose": "官网游戏列表、路由和固定资源" }
   ],
   "current_phase": "completed",
-  "checkpoint": "2048 已作为第二款正式游戏完成源码、固定版本官网接入与桌面/手机实测；全量 UI audit 的既有首页原型 9px 字号问题不属于本任务。",
+  "checkpoint": "2048 和后续节点庆祝增加 72 粒子全视口撒花；固定层与视口尺寸一致、禁止指针事件，不阻挡继续操作，并遵守 reduced-motion。",
   "skills": ["iwantools-frontend-development", "manage-task-packages"],
   "next_action": null
 }
