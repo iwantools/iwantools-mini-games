@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "2026-07-20-minesweeper-interaction-polish",
+  "title": "扫雷交互与胜利反馈优化",
+  "project": "iwantools-mini-games",
+  "status": "completed",
+  "created_at": "2026-07-20T17:28:08+08:00",
+  "updated_at": "2026-07-20T22:44:14+08:00",
+  "scope": [
+    "为已满足数字格新增经典 chord 快排规则与桌面双键交互",
+    "将移动端操作改为清晰的翻格与插旗双态选择并保留长按插旗",
+    "为成功结算增加尊重减少动态效果偏好的克制动画",
+    "构建新版本 adapter 并更新官网固定资源与校验清单",
+    "在棋盘附近增加不打扰主流程的简明规则说明",
+    "将规则入口强化为标题旁问号指引，增强胜利庆祝并提供失败快速重开",
+    "弱化问号视觉并支持鼠标悬浮显示规则",
+    "提升难度下拉框的视觉质感与交互反馈",
+    "增加仅本地显示的成功与失败结果预览按钮",
+    "将胜利彩纸升级为不阻挡操作的全视口撒花"
+  ],
+  "out_of_scope": [
+    "修改难度、布雷算法、计时规则或本地存储范围",
+    "增加音效、震动、账号、排行榜或联网能力",
+    "提交、推送、发布或部署"
+  ],
+  "acceptance": [
+    { "id": "AC-01", "text": "旗数等于已翻开数字时，快排翻开其余未标记邻格；旗标错误时仍可能触雷。", "status": "passed", "evidence": ["EV-20260720-001"] },
+    { "id": "AC-02", "text": "桌面支持左右键组合快排，并在帮助文案中说明。", "status": "passed", "evidence": ["EV-20260720-001", "EV-20260720-003"] },
+    { "id": "AC-03", "text": "手机端可明确选择翻格或插旗模式，且长按插旗继续可用。", "status": "passed", "evidence": ["EV-20260720-003"] },
+    { "id": "AC-04", "text": "胜利时显示结算动画，并尊重 prefers-reduced-motion。", "status": "passed", "evidence": ["EV-20260720-002", "EV-20260720-004"] },
+    { "id": "AC-05", "text": "小游戏源码验证通过并产出新版本 ESM。", "status": "passed", "evidence": ["EV-20260720-002"] },
+    { "id": "AC-06", "text": "官网固定资源校验、typecheck、静态生成和 E2E 通过。", "status": "passed", "evidence": ["EV-20260720-004"] },
+    { "id": "AC-07", "text": "玩家可在棋盘附近展开查看目标、数字、插旗与快排规则。", "status": "passed", "evidence": ["EV-20260720-006"] },
+    { "id": "AC-08", "text": "游戏标题旁显示可访问的问号规则入口。", "status": "passed", "evidence": ["EV-20260720-007"] },
+    { "id": "AC-09", "text": "胜利反馈在视觉中心显示强化庆祝效果并带动棋盘扩散动画。", "status": "passed", "evidence": ["EV-20260720-007"] },
+    { "id": "AC-10", "text": "失败后在棋盘附近显示明确的立即重开操作。", "status": "passed", "evidence": ["EV-20260720-007"] },
+    { "id": "AC-11", "text": "问号入口保持轻量，鼠标悬浮和键盘聚焦可显示规则，触屏点击仍可使用。", "status": "passed", "evidence": ["EV-20260720-009"] },
+    { "id": "AC-12", "text": "难度选择保留原生语义和键盘操作，同时具备一致的箭头、边框及 hover/focus 反馈。", "status": "passed", "evidence": ["EV-20260720-009"] },
+    { "id": "AC-13", "text": "本机开发地址显示成功/失败预览按钮，线上地址不显示，预览不写入成绩或派发真实结果。", "status": "passed", "evidence": ["EV-20260720-010"] },
+    { "id": "AC-14", "text": "胜利撒花覆盖完整浏览器视口，不阻挡交互并尊重减少动态效果设置。", "status": "passed", "evidence": ["EV-20260720-011"] }
+  ],
+  "context": [
+    { "path": "docs/PRD.md", "purpose": "扫雷体验与输入验收" },
+    { "path": "docs/SDD.md", "purpose": "核心规则、adapter 与构建边界" },
+    { "glob": "src/games/minesweeper/**/*.ts", "purpose": "扫雷核心与 Web adapter" },
+    { "glob": "tests/**/*.test.ts", "purpose": "规则与存储回归测试" }
+  ],
+  "issue": "iwantools/iwantools#21",
+  "external_references": [
+    { "id": "site-integration", "kind": "workspace-project", "locator": "projects/iwantools-site", "purpose": "官网固定版本资源与加载入口" }
+  ],
+  "current_phase": "completed",
+  "checkpoint": "扫雷胜利彩纸已升级为 72 粒子全视口撒花；固定层与视口边界一致、禁止指针事件，保留完美排雷横幅并尊重 reduced-motion。",
+  "skills": ["iwantools-frontend-development", "manage-task-packages"],
+  "next_action": null,
+  "completed_at": "2026-07-20T22:44:14+08:00"
+}
