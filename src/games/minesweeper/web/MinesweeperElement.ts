@@ -619,5 +619,5 @@ const styles = `
     .rules-panel { left: -136px; }
     .rules-panel::before { left: 142px; }
   }
-  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
 `
