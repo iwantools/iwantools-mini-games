@@ -173,15 +173,17 @@ dist/minesweeper/iw-minesweeper.js
 
 发布与官网集成流程：
 
-1. 在小游戏项目中完成 typecheck、lint、unit、build 和 adapter 浏览器验证。
-2. 为构建产物记录版本和 SHA-256。
-3. 官网将已确认版本复制到 `public/games-assets/minesweeper/<version>/`。
-4. 官网版本清单记录游戏标识、版本、同源路径、element name 和 SHA-256。
-5. `/games/minesweeper/` 只在客户端动态导入该固定路径。
-6. import 或注册失败时显示可恢复错误，不回退到未知版本。
-7. 回滚时将官网清单指向上一个已验证版本并重新生成官网。
+1. 在 topic branch 中完成 typecheck、unit、build 和 adapter 浏览器验证。
+2. PR 验证通过后先合并远端 `main`；未进入 `main` 的实现不得向官网提供正式制品。
+3. 从 `main` 上已验证的目标 commit 创建版本 tag，并确认 tag 可从远端 `main` 到达。
+4. 从 tag 对应源码构建 adapter，记录源 commit、版本和 SHA-256，创建包含 adapter、release notes 与回滚说明的 GitHub Release。
+5. GitHub Release 完成后，官网才可下载固定制品并复制到 `public/games-assets/<game>/<version>/`。
+6. 官网版本清单记录游戏标识、生产方仓库、版本、tag、源 commit、Release URL、同源路径、element name 和 SHA-256。
+7. `/games/minesweeper/` 只在客户端动态导入该固定路径。
+8. import 或注册失败时显示可恢复错误，不回退到未知版本。
+9. 回滚时将官网清单指向上一个已验证的正式 Release 制品并重新生成官网。
 
-首版可以手工复制经验证的构建产物；第二款游戏或第二次发布出现后，再把复制与校验自动化。无论手工还是自动化，线上都只加载官网本地同源文件。
+分支构建只能作为 release candidate 用于本地和 PR 验证。禁止从 feature branch、未提交工作区或没有正式 GitHub Release 的 checkout 手工复制 JS 给官网。具体跨仓库顺序以 `../../../standards/RELEASE.md` 的“跨仓库制品集成” gate 为准。
 
 ## 性能
 

@@ -1,6 +1,6 @@
 # iwantools-mini-games
 
-`iwantools-mini-games` 为 iwantools 官网提供轻量小游戏。每款游戏独立构建为版本化 Custom Element ESM adapter，由官网作为同源静态资源按需加载。
+`iwantools-mini-games` 为 iwantools 官网提供轻量小游戏。每款游戏独立发布为版本化 Custom Element ESM adapter；官网只接入已经合并 `main`、创建 tag 并发布 GitHub Release 的固定制品，再作为同源静态资源按需加载。
 
 项目已经进入正式迭代。经典扫雷是第一款已实现游戏，当前里程碑新增经典 2048；每款游戏保持独立规则模块和按需加载 adapter。
 
