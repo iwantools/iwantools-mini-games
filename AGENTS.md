@@ -17,12 +17,12 @@
 
 ## 任务路由
 
-- 新项目或范围变化: `../../playbooks/project/start-new-project.md`
-- 产品定义: `../../playbooks/product/turn-idea-into-prd.md`
-- 架构变化: `../../playbooks/engineering/design-architecture.md`
+- 新项目或范围变化: 当前对话确认目标、验证假设、范围和非目标，再更新 PRD/SDD 或 task package。
+- 产品定义: `docs/PRD.md`
+- 架构变化: `docs/SDD.md`；长期取舍使用 ADR。
 - 前端实现: `../../skills/iwantools-frontend-development/`
-- 实现流程: `../../playbooks/engineering/implement-feature.md`
-- 发布: `../../playbooks/engineering/release.md`
+- 复杂任务续接: `../../skills/manage-task-packages/`
+- 发布: `../../standards/RELEASE.md` 与项目发布文档。
 
 ## 标准
 
