@@ -17,12 +17,13 @@
 
 ## 任务路由
 
-- 新项目或范围变化: `../../playbooks/project/start-new-project.md`
-- 产品定义: `../../playbooks/product/turn-idea-into-prd.md`
-- 架构变化: `../../playbooks/engineering/design-architecture.md`
-- 前端实现: `../../skills/iwantools-frontend-development/`
-- 实现流程: `../../playbooks/engineering/implement-feature.md`
-- 发布: `../../playbooks/engineering/release.md`
+- 工作区路由与授权: `../../standards/AI-CODING.md`
+- 产品定义与范围: `docs/PRD.md`
+- 架构与设计: `docs/SDD.md`
+- 前端实现与测试: `../../skills/iwantools-frontend-development/`
+- 跨轮次任务: `../../skills/manage-task-packages/`，package 位置 `docs/tasks/`
+- Git: `../../skills/iwantools-git-workflow/` 与 `../../standards/GIT.md`
+- 发布: `../../standards/RELEASE.md`
 
 ## 标准
 
